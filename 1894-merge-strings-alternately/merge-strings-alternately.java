@@ -13,17 +13,15 @@ class Solution {
             shortest = word1;
         }
 
-        for (int i = 0; i < shortest.length(); i++) {
-            // merge the strings alternately
-            result += word1.charAt(i);
-            result += word2.charAt(i);
-        }
-
-        // if the word lengths are not equal
-        if (longest.length() > shortest.length()) {
-            // append the remaining characters
-            for (int j = shortest.length(); j < longest.length(); j++) {
-                result += longest.charAt(j);
+        for (int i = 0; i < longest.length(); i++) {
+            if (i < shortest.length()) {
+                // merge the strings alternately
+                result += word1.charAt(i);
+                result += word2.charAt(i);
+            }
+            // append remaining characters from longer word
+            else {
+                result += longest.charAt(i);
             }
         }
 
