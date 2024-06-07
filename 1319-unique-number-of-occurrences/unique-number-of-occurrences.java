@@ -17,15 +17,3 @@ class Solution {
         return true;  
     }
 }
-
-/*
-map
-1 -> 0 + 1 + 1 = 2
-2 -> 0 + 1     = 1
-3 -> 0         = 0
-
-initialize each new key to 0
-when key exists in map, add 1 to the value
-
-create a set and add each value, if a conflict occurs, return false
-*/
