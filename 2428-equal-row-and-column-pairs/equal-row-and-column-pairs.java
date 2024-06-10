@@ -13,7 +13,7 @@ class Solution {
         // Add up the frequency of each column in map.
         for (int c = 0; c < n; c++) {
             int[] colArray = new int[n];
-            for (int r = 0; r < n; ++r) {
+            for (int r = 0; r < n; r++) {
                 colArray[r] = grid[r][c];
             }
             count += rowCounter.getOrDefault(Arrays.toString(colArray), 0);
