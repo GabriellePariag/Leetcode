@@ -15,9 +15,11 @@ class Solution {
             temp.clear();
         }
 
+        /*
         for(Map.Entry<Integer, List<Integer>> entry: map.entrySet()) {
             System.out.println("Key: " + entry.getKey() + " ,Value: " + entry.getValue());
         }
+        */
 
         // check for equal row and column pairs
         int result = 0;
@@ -26,12 +28,6 @@ class Solution {
             list = Arrays.stream(grid[i]).boxed().collect(Collectors.toList());
             int freq = Collections.frequency(map.values(), list);
             result += freq;
-            /*
-            if(map.containsValue(list)) {
-
-                result++;
-            }
-            */
             list.clear();
         }
 
