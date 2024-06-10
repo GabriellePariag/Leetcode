@@ -1,36 +1,27 @@
 class Solution {
     public int equalPairs(int[][] grid) {
-        HashMap<Integer, List<Integer>> map = new HashMap<>();
-        List<Integer> temp = new ArrayList<>();
-        List<Integer> temp2 = new ArrayList<>();
-
-        for(int i = 0; i < grid.length; i++) {
-            // add the column to the temp list
-            for (int j = 0; j < grid.length; j++) {
-                temp2.add(grid[i][j]);
-                temp.add(grid[j][i]);
+        Map<String, Integer> map = new HashMap<>();
+        for(int i = 0; i < grid.length; i++){
+            StringBuilder s = new StringBuilder();
+            for(int j = 0; j < grid.length; j++){
+                s.append(grid[i][j]);
+                s.append("+");
             }
-            // map the row to the column
-            map.put(i, new ArrayList<>(temp));
-            temp.clear();
+            String ss = s.toString();
+            map.put(ss, map.getOrDefault(ss, 0) + 1);
         }
-
-        /*
-        for(Map.Entry<Integer, List<Integer>> entry: map.entrySet()) {
-            System.out.println("Key: " + entry.getKey() + " ,Value: " + entry.getValue());
+        int c = 0;
+        for(int i = 0; i < grid.length; i++){
+            StringBuilder sb = new StringBuilder();
+            for(int j = 0; j < grid.length; j++){
+                sb.append(grid[j][i]);
+                sb.append("+");
+            }
+            String ss = sb.toString();
+            if(map.containsKey(ss)){
+                c += map.get(ss);
+            }
         }
-        */
-
-        // check for equal row and column pairs
-        int result = 0;
-        List<Integer> list = new ArrayList<>();
-        for(int i = 0; i < grid.length; i++) {
-            list = Arrays.stream(grid[i]).boxed().collect(Collectors.toList());
-            int freq = Collections.frequency(map.values(), list);
-            result += freq;
-            list.clear();
-        }
-
-        return result;
+        return c;
     }
 }
