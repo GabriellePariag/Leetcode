@@ -56,8 +56,8 @@ class Solution {
             trie.insert(word);
         }
 
-        StringBuilder curr = new StringBuilder();
-        StringBuilder result = new StringBuilder();
+        StringBuilder curr = new StringBuilder(1000);
+        StringBuilder result = new StringBuilder(1000);
         int marker = 0;
         
         for(int i = 0; i < sentence.length(); i++) {
