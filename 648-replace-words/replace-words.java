@@ -55,9 +55,42 @@ class Solution {
         for (String word : dictionary) {
             trie.insert(word);
         }
+
+        StringBuilder curr = new StringBuilder(1000);
+        StringBuilder result = new StringBuilder(1000);
+        int marker = 0;
+        
+        for(int i = 0; i < sentence.length(); i++) {
+            char letter = sentence.charAt(i);
+            if (i+1 == sentence.length() && marker == 0) {
+                curr.append(letter);
+                result.append(curr);
+            }
+            else if (letter == ' ') {
+                if (marker == 0) {
+                    System.out.println(curr.toString());
+                    result.append(curr);
+                }
+                result.append(letter);
+                curr.delete(0, curr.length());
+                marker = 0;
+            }
+            else if(marker != 1) {
+                curr.append(letter);
+                if(trie.search(curr.toString())){
+                    marker = 1;
+                    result.append(curr);
+                    continue;
+                }
+            }
+        }
+
+
+        /*
         // split the sentence by the space, to get an array of strings
         String[] words = sentence.split(" ");
         StringBuilder result = new StringBuilder();
+
         // traverse the trie for a root for that string
             // for each node that matches the char, check for word end indicator
             // if indicator == 1, replace arr[i] with the root
@@ -74,6 +107,7 @@ class Solution {
             else result.append(words[i] + " ");
             
         }
+        */
 
         return result.toString();
         
