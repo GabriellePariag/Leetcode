@@ -5,6 +5,7 @@ class Solution {
         int left = 0;
         int right = 1;
 
+        // edge case for empty arr
         if (nums.length == 0) {
             List<Integer> l = new ArrayList<Integer>();
             l.add(lower);
