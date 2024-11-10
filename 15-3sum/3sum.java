@@ -6,19 +6,25 @@ class Solution {
         int complement;
 
         for(int i = 0; i < nums.length; i++) {
+            // if we have not yet seen this number, lets find its complement
             if (duplicates.add(nums[i])) {
                 for (int j = i+1; j < nums.length; j++) {
-                    complement = -nums[i] - nums[j];
+                    // for each remaining number in the array
+                    complement = -nums[i] - nums[j]; // this computes to zero
+                    // do we have the final puzzle piece?
                     if (seen.containsKey(complement) && seen.get(complement) == i) {
+                        // success!
                         List<Integer> triplet = Arrays.asList(
                         nums[i],
                         nums[j],
                         complement
                         );
                         Collections.sort(triplet);
-                        // add the set to the map, and its actual list. so there are no repeats.
+                        // add the sorted list to the set, since it is sorted, there will be no duplicates
                         res.add(triplet);
                     }
+                    // finally, add this element to be used as a future complement
+                    // as we move along the array
                     seen.put(nums[j], i);
                 }
             }
