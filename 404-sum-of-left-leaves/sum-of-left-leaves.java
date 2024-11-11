@@ -15,10 +15,6 @@
  */
 class Solution {
     public int sumOfLeftLeaves(TreeNode root) {
-        return recursive(root);
-    }
-
-    public int recursive(TreeNode root) {
         int temp = 0;
         if (root == null) return 0;
         // if there is a left root
@@ -26,7 +22,7 @@ class Solution {
             // and it's a leaf
             if ((root.left.left == null) && (root.left.right == null)) temp = root.left.val;
         }
-        return recursive(root.left) + recursive(root.right) + temp;
+        return sumOfLeftLeaves(root.left) + sumOfLeftLeaves(root.right) + temp;
     }
 }
 /*
